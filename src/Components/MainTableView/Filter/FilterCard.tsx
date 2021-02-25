@@ -7,6 +7,7 @@ import TableAttributeType from '../enums/TableAttributeType';
 import './FilterCard.css'
 
 type FilterCardState = {
+  wrapperRef: any
 }
 
 /**
@@ -16,11 +17,16 @@ class FilterCard extends React.Component<{index: number, restriction: Restrictio
   constructor(props: any) {
     super(props);
 
+    this.state = {
+      wrapperRef: React.createRef()
+    }
+
     this.getAttributeNameSelectBlock = this.getAttributeNameSelectBlock.bind(this);
     this.handleAttributeSelection = this.handleAttributeSelection.bind(this);
     this.handleOperatorSelection = this.handleOperatorSelection.bind(this);
     this.handleValueChange = this.handleValueChange.bind(this);
     this.handleEnableChange = this.handleEnableChange.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
   /**
@@ -130,6 +136,12 @@ class FilterCard extends React.Component<{index: number, restriction: Restrictio
     }
     // Get the input block by using the tableAttribute helper funcition
     return (TableAttribute.getAttributeInputBlock(this.props.restriction.tableAttribute, this.props.restriction.value, undefined, this.handleValueChange))
+  }
+
+  handleClickOutside(event: any) {
+      if (this.state.wrapperRef && !this.state.wrapperRef.current.contains(event.target)) {
+          alert('You clicked outside of me!');
+      }
   }
 
   render() {
