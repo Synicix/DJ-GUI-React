@@ -174,13 +174,13 @@ export default class TableContent extends React.Component<TableContentProps, Tab
   getCurrentTableActionMenuComponent() {
     return(
       <div className="actionMenuContainer">
-        <div className={this.state.currentSelectedTableActionMenu === TableActionType.FILTER ? 'visable-action-menu-container' : 'hidden-action-menu-container'}>
+        <div className={this.state.currentSelectedTableActionMenu === TableActionType.FILTER ? 'visible-action-menu-container' : 'hidden-action-menu-container'}>
           <Filter 
             tableAttributesInfo={this.props.tableAttributesInfo}
             setRestrictions={this.props.setRestrictions}
           />
         </div>
-        <div className={this.state.currentSelectedTableActionMenu === TableActionType.INSERT ? 'visable-action-menu-container' : 'hidden-action-menu-container'}>
+        <div className={this.state.currentSelectedTableActionMenu === TableActionType.INSERT ? 'visible-action-menu-container' : 'hidden-action-menu-container'}>
           <InsertTuple 
             token={this.props.token}
             selectedSchemaName={this.props.selectedSchemaName}
@@ -192,7 +192,7 @@ export default class TableContent extends React.Component<TableContentProps, Tab
             insertInAction={(isWaiting: boolean) => this.handleActionWaitTime(isWaiting)}
           />
         </div>
-        <div className={this.state.currentSelectedTableActionMenu === TableActionType.UPDATE ? 'visable-action-menu-container' : 'hidden-action-menu-container'}>
+        <div className={this.state.currentSelectedTableActionMenu === TableActionType.UPDATE ? 'visible-action-menu-container' : 'hidden-action-menu-container'}>
           <UpdateTuple 
               token={this.props.token}
               selectedSchemaName={this.props.selectedSchemaName}
@@ -204,7 +204,7 @@ export default class TableContent extends React.Component<TableContentProps, Tab
               updateInAction={(isWaiting: boolean) => this.handleActionWaitTime(isWaiting)}
           />
         </div>
-        <div className={this.state.currentSelectedTableActionMenu === TableActionType.DELETE ? 'visable-action-menu-container' : 'hidden-action-menu-container'}>
+        <div className={this.state.currentSelectedTableActionMenu === TableActionType.DELETE ? 'visible-action-menu-container' : 'hidden-action-menu-container'}>
           <DeleteTuple  
             token={this.props.token}
             // tupleToDelete={this.state.selectedTableEntry}
